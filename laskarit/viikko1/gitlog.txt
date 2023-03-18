@@ -1,0 +1,103 @@
+commit 11023c317380ff8dbe0319c0dcd98776c3e59783
+Author: Niko Raulas <niko.raulas@outlook.com>
+Date:   Sat Mar 18 16:13:03 2023 +0200
+
+    poisto ja nimenvaihdos
+
+ tiedostoja/file2.txt                 | 0
+ tiedostoja/{file1.txt => file22.txt} | 0
+ 2 files changed, 0 insertions(+), 0 deletions(-)
+
+commit 64a594ac863cbc3421846647898c44147acf0adf
+Author: Niko Raulas <niko.raulas@outlook.com>
+Date:   Sat Mar 18 16:06:20 2023 +0200
+
+    lisätty tiedosto
+
+ tiedostoja/file1.txt | 0
+ tiedostoja/file2.txt | 0
+ tiedostoja/file3.txt | 0
+ 3 files changed, 0 insertions(+), 0 deletions(-)
+
+commit a8be56b99b7579bdcd0d08673a56cbdba6805ff6
+Author: Niko Raulas <niko.raulas@outlook.com>
+Date:   Sat Mar 18 15:59:28 2023 +0200
+
+    muutoksia
+
+ eka.txt    | 19 +------------------
+ kolmas.txt |  3 +++
+ 2 files changed, 4 insertions(+), 18 deletions(-)
+
+commit e929e7f13e2d620891a0f102dc984c194b4562ec
+Author: Niko Raulas <niko.raulas@outlook.com>
+Date:   Sat Mar 18 15:56:03 2023 +0200
+
+    nimen muutos tiedosto.txt -> eka.txt
+
+ tiedosto.txt => eka.txt | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+
+commit 0ad21bcee0f55b2dbb5b8374f5673c15b4bb3a47
+Author: Niko Raulas <niko.raulas@outlook.com>
+Date:   Sat Mar 18 15:53:05 2023 +0200
+
+    toinen.txt poistettu
+
+ toinen.txt | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+
+commit b475b23458f39c67f38d7f89343d71f34aa79e67
+Author: Niko Raulas <niko.raulas@outlook.com>
+Date:   Sat Mar 18 15:49:35 2023 +0200
+
+    poisto ja lisäys
+
+ tiedosto.txt | 17 ++++-------------
+ 1 file changed, 4 insertions(+), 13 deletions(-)
+
+commit 6e8f807a044ffcd5a0ffe2e6b08f5345cf3e483a
+Author: Niko Raulas <niko.raulas@outlook.com>
+Date:   Sat Mar 18 15:47:24 2023 +0200
+
+    lisätty paljon tekstiä tiedostoon
+
+ tiedosto.txt | 656 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++-
+ 1 file changed, 655 insertions(+), 1 deletion(-)
+
+commit df31730dc2948d128268860a07c1927cb64bb174
+Author: Niko Raulas <niko.raulas@outlook.com>
+Date:   Sat Mar 18 15:39:06 2023 +0200
+
+    stuff lisätty
+
+ stuff/jokin.txt | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+
+commit cb0761e25f4ed9f0d941bb583985efccf55a31d1
+Author: Niko Raulas <niko.raulas@outlook.com>
+Date:   Sat Mar 18 15:36:51 2023 +0200
+
+    kolmas luotu
+
+ kolmas.txt | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+
+commit 9a4ba18e3d6a7ea0fe9132aac77aa1831dc68293
+Author: Niko Raulas <niko.raulas@outlook.com>
+Date:   Sat Mar 18 15:33:07 2023 +0200
+
+    muutos ja lisäys
+
+ tiedosto.txt | 1 +
+ toinen.txt   | 0
+ 2 files changed, 1 insertion(+)
+
+commit 2f9000b2d2717d0426df8ef5447ec97ffcdbfb7c
+Author: Niko Raulas <niko.raulas@outlook.com>
+Date:   Sat Mar 18 15:28:37 2023 +0200
+
+    tiedosto.txt luotu
+
+ tiedosto.txt | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
