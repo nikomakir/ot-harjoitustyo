@@ -1,4 +1,4 @@
-# Ohjelmistotuotanto, harjoitustyö
+# Ohjelmistotekniikka, harjoitustyö
 ## Tehtävät
 **Viikko1**
 
