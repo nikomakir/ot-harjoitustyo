@@ -1,3 +1,3 @@
-# Otsikko
-**Tämä on tietoa.** Jotain ~~roskaa~~*muutakin* tulisi lisätä.
-## Eiköhän tämä riitä
+# Ohjelmistotuotanto, harjoitustyö
+## Tehtävät
+**Viikko1**
