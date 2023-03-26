@@ -9,3 +9,5 @@
 ## Harjoitustyö
 
 [tuntikirjanpito.md](https://github.com/nikomakir/ot-harjoitustyo/blob/main/dokumentaatio/tuntikirjanpito.md)
+
+[vaatimusmaarittely.md](https://github.com/nikomakir/ot-harjoitustyo/blob/main/dokumentaatio/vaatimusmaarittely.md)
