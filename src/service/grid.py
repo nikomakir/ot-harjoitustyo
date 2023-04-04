@@ -20,8 +20,9 @@ class GameGrid:
             self._pos[0] += 1
 
     def _insert_number(self,number:int):
-        x,y = self._get_pos()
-        self._grid._insert_number(x,y,number)
+        if 0<=number<10:
+            x,y = self._get_pos()
+            self._grid._insert_number(x,y,number)
 
     def _check_if_complete(self):
         return self._grid._check_if_complete()

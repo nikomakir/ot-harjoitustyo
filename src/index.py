@@ -3,7 +3,6 @@ from service.grid import GameGrid
 from ui.renderer import Renderer
 from eventqueue import EventQueue
 from gameloop import GameLoop
-from entities.sudoku import Sudoku
 
 grid = [
 [3,0,5,4,0,2,0,6,0],
