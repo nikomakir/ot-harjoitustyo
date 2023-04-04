@@ -31,15 +31,14 @@ def main():
     width = 550
     display = pygame.display.set_mode((width,width))
     pygame.display.set_caption("Sudoku")
-
+    pygame.init()
     game_grid = GameGrid(grid,solved)
     renderer = Renderer(display,game_grid)
     event_queue = EventQueue()
     game_loop = GameLoop(game_grid,renderer,event_queue)
     
-    pygame.init()
     game_loop.start()
 
 
-if __name__=="main":
+if __name__=="__main__":
     main()

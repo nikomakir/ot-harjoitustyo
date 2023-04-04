@@ -7,10 +7,11 @@ class GameLoop:
         self._event_queue = event_queue
 
     def start(self):
+        self._render()
         while True:
             if self._hande_events()==False:
                 break
-            self._render()
+            # tähän self._render() jos tapahtuu muutoksia
 
     def _hande_events(self):
         for event in self._event_queue.get():
