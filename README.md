@@ -1,9 +1,12 @@
 # Ohjelmistotekniikka, harjoitustyö
 
+## Sudoku
+Harjoitustyön aiheena on Sudoku -peli.
+
 ## Dokumentaatio
 
-[tuntikirjanpito.md](https://github.com/nikomakir/ot-harjoitustyo/blob/main/dokumentaatio/tuntikirjanpito.md)
+ - [tuntikirjanpito.md](https://github.com/nikomakir/ot-harjoitustyo/blob/main/dokumentaatio/tuntikirjanpito.md)
 
-[vaatimusmaarittely.md](https://github.com/nikomakir/ot-harjoitustyo/blob/main/dokumentaatio/vaatimusmaarittely.md)
+ - [vaatimusmaarittely.md](https://github.com/nikomakir/ot-harjoitustyo/blob/main/dokumentaatio/vaatimusmaarittely.md)
 
-[changelog.md](https://github.com/nikomakir/ot-harjoitustyo/blob/main/dokumentaatio/changelog.md)
+ - [changelog.md](https://github.com/nikomakir/ot-harjoitustyo/blob/main/dokumentaatio/changelog.md)
