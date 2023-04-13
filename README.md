@@ -5,11 +5,11 @@ Harjoitustyön aiheena on Sudoku -peli.
 
 ## Dokumentaatio
 
- - [tuntikirjanpito.md](https://github.com/nikomakir/ot-harjoitustyo/blob/main/dokumentaatio/tuntikirjanpito.md)
+ - [tuntikirjanpito.md](./dokumentaatio/tuntikirjanpito.md)
 
- - [vaatimusmaarittely.md](https://github.com/nikomakir/ot-harjoitustyo/blob/main/dokumentaatio/vaatimusmaarittely.md)
+ - [vaatimusmaarittely.md](./dokumentaatio/vaatimusmaarittely.md)
 
- - [changelog.md](https://github.com/nikomakir/ot-harjoitustyo/blob/main/dokumentaatio/changelog.md)
+ - [changelog.md](./dokumentaatio/changelog.md)
  
 ## Asennus
 Asenna riippuvuudet komennolla:
