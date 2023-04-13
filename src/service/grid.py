@@ -5,6 +5,11 @@ class GameGrid:
     def __init__(self, grid: list, solved: list):
         self._grid = Sudoku(grid, solved)
         self._pos = [0, 0]
+        self._filled = 81
+        for i in range(9):
+            for j in range(9):
+                if grid[i][j]==0:
+                    self._filled -= 1
 
     def get_pos(self):
         return tuple(self._pos)
@@ -23,7 +28,16 @@ class GameGrid:
     def insert_number(self, number: int):
         if 0 <= number < 10:
             x, y = self.get_pos()
-            self._grid.insert_number(x, y, number)
+            current_number = self._grid.get_current_number(x, y)
+            change = self._grid.insert_number(x, y, number)
+            if change:
+                if current_number == 0 and number >0:
+                    self._filled += 1
+                elif current_number != 0 and number == 0:
+                    self._filled -= 1                      
+        if self._filled == 81:
+            return self.check_if_complete()
+        return False
 
     def check_if_complete(self):
         return self._grid.check_if_complete()

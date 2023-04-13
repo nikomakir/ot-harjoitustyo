@@ -6,8 +6,12 @@ class Sudoku:
 
     def insert_number(self, x, y, number):
         if self._start[y][x] != 0:
-            return
+            return False
         self._grid[y][x] = number
+        return True
 
     def check_if_complete(self):
         return self._grid == self._solved
+    
+    def get_current_number(self, x, y):
+        return self._grid[y][x]
