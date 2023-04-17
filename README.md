@@ -42,3 +42,10 @@ poetry run invoke coverage-report
 
 ``` 
 Raportti generoituu _htmlcov_-nimiseen tiedostoon.
+
+### Pylint
+
+Pylint -tarkistus ajetaan komennolla:
+```
+poetry run invoke lint
+
