@@ -1,9 +1,8 @@
 import pygame
-from service.grid import GameGrid
 
 
 class Renderer:
-    def __init__(self, display, grid: GameGrid):
+    def __init__(self, display, grid):
         self._display = display
         self._grid = grid
         self._background_color = (251, 247, 245)

@@ -8,3 +8,7 @@
 | 2.4.       | 5        | tehty Sudoku -luokka ja sovellusloogista vastaava luokka GameGrid |
 | 3.4.       | 6        | testailtu pygamea ja ruudukon piirtämistä ja lisätty koodia |
 | 4.4.       | 3        | debuiggailtu ohjelmaa, jotta ohjelman saa toimimaan vähillä toiminnoilla |
+| 13.4.      | 2        | lisätty hieman toiminnallisuutta GameGrid -luokkaan |
+| 15.4.      | 3        | aloitusvalikon toteutus |
+| 16.4.      | 5        | Sudoku -luokan muokkaus |
+| 17.4.      | 1        | Yhdistetty menu -valikko ja peliin |
