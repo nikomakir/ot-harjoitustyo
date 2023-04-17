@@ -26,16 +26,6 @@ class Sudoku:
                 if number in seen_in_columns:
                     return False
                 seen_in_columns.add(number)
-
-        for l in range(0,7,3):
-            for k in range(0,7,3):
-                seen_in_squares = set()
-                for i in range(3):
-                    for j in range(3):
-                        number = self._grid[i+l][j+k]
-                        if number in seen_in_squares:
-                            return False
-                        seen_in_squares.add(number)
         return True
                 
     
