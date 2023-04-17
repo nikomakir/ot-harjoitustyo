@@ -11,4 +11,7 @@
 | 13.4.      | 2        | lisätty hieman toiminnallisuutta GameGrid -luokkaan |
 | 15.4.      | 3        | aloitusvalikon toteutus |
 | 16.4.      | 5        | Sudoku -luokan muokkaus |
-| 17.4.      | 1        | Yhdistetty menu -valikko ja peliin |
+| 17.4.      | 6        | Yhdistetty menu -valikko peliin ja lisätty testejä |
+|----------- | ---------|-------|
+|            | Yhteensä |       |
+|            | 34       |       |

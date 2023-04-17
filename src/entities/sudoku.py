@@ -1,13 +1,15 @@
 from dokusan import generators
 import numpy as np
 
+
 class Sudoku:
     def __init__(self, difficulty):
-        grid = np.array(list(str(generators.random_sudoku(avg_rank=difficulty)))).reshape(9,9)
-        self._grid = np.asarray(grid,dtype=int)
+        grid = np.array(
+            list(str(generators.random_sudoku(avg_rank=difficulty)))).reshape(9, 9)
+        self._grid = np.asarray(grid, dtype=int)
         self._start = np.copy(self._grid)
 
-    def insert_number(self, x, y, number):
+    def insert_number(self, x, y, number):  # pylint: disable=invalid-name
         if self._start[y][x] != 0:
             return False
         self._grid[y][x] = number
@@ -27,7 +29,6 @@ class Sudoku:
                     return False
                 seen_in_columns.add(number)
         return True
-                
-    
-    def get_current_number(self, x, y):
+
+    def get_current_number(self, x, y): # pylint: disable=invalid-name
         return self._grid[y][x]

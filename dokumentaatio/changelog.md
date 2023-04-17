@@ -15,3 +15,5 @@
     - päivitetty check_if_complete metodin toiminta vastaamaan luokan uuttaa toiminnallisuutta
 - muokattu GameGrid -luokkaa
     - nyt voi luoda eri vaikeustason pelejä, mutta vielä ei ole käyttöliittymässä valintamahdollisuutta
+- muokattu Sudoku -luokan testit kattamaan koko luokan
+- lisätty testejä GameGrid -luokalle
