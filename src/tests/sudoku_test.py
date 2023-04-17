@@ -69,3 +69,7 @@ class TestSudoku(unittest.TestCase):
                            [5,1,9,8,5,7,4,3,6],
                            [7,4,5,3,1,6,8,9,2]]
         self.assertFalse(self.grid.check_if_complete())
+
+    def test_get_current_number_returns_correct(self):
+        self.grid._grid = [[1,2,3],[2,5,4]]
+        self.assertEqual(self.grid.get_current_number(0,1), 2)
