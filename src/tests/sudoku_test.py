@@ -3,6 +3,11 @@ from entities.sudoku import Sudoku
 
 
 class TestSudoku(unittest.TestCase):
+    """
+    Tämä testaa vain Sudoku -luokan toiminnallisuutta. 
+    dokusan ja numpy kirjaston toimintoja ei testata erikseen.
+    
+    """
     def setUp(self):
         self.grid =  Sudoku(50)
         self.grid._grid =  [[0, 2, 0], [0, 5, 0], [0, 0, 9]]
