@@ -11,6 +11,8 @@ Harjoitustyön aiheena on Sudoku -peli.
 
  - [changelog.md](./dokumentaatio/changelog.md)
  
+ - [arkkitehtuuri](./dokumentaatio/arkkitehtuuri.md)
+ 
 ## Asennus
 Asenna riippuvuudet komennolla:
 ```
