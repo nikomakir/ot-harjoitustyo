@@ -1,7 +1,7 @@
 import pygame
 from service.grid import GameGrid
 from ui.renderer import Renderer
-from gameloop import GameLoop
+from ui.gameloop import GameLoop
 
 
 class Menu:

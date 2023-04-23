@@ -7,8 +7,8 @@ class Renderer:
         self._grid = grid
         self._background_color = (251, 247, 245)
         self._starting_font = pygame.font.SysFont('Comic Sans MS', 35)
-        self._original_grid_color = (52, 31, 151)
-        self._number_color = (0, 0, 0)
+        self._original_grid_color = (0, 0, 0)
+        self._number_color = (52, 31, 151)
         self._choice_color = (255, 200, 200)
 
     def render(self):

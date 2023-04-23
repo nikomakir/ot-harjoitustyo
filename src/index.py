@@ -1,6 +1,6 @@
 import pygame
 from ui.menu import Menu
-from eventqueue import EventQueue
+from ui.eventqueue import EventQueue
 
 
 def main():
