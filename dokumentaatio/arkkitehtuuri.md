@@ -27,7 +27,7 @@ Repositories -kansion _SudokuRepository_ -luokka vastaa keskeneräisen pelin tal
 
 ### Tiedostot
 
-Sovellus tallentaa keskeneräisen pelin erilliseen tiedostoon. Tiedoston nimi on määritelty sovelluksen juureen sijoitetussa konfiguraatiotiedostossa [.env](.env).
+Sovellus tallentaa keskeneräisen pelin erilliseen tiedostoon. Tiedoston nimi on määritelty sovelluksen juureen sijoitetussa konfiguraatiotiedostossa [.env](./.env).
 
 ## Päätoiminnallisuudet
 
