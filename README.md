@@ -15,7 +15,7 @@ Harjoitustyön aiheena on Sudoku -peli.
  
 ## Asennus
 
-Lataa sovellus [tästä](https://github.com/nikomar/ot-harjoitustyo/releases/latest).
+Lataa sovellus [tästä](https://github.com/nikomakir/ot-harjoitustyo/releases/tag/viikko5).
 
 Asenna riippuvuudet komennolla:
 ```
