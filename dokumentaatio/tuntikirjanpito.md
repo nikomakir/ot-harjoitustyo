@@ -15,6 +15,6 @@
 | 21.4.      | 2        | Perehdytty ja suunniteltu tallennustapaa sudokuruudukolle  |
 | 23.4.      | 2        | Aloitettu SudokuRepository luokan teko  |
 | 24.4.      | 6        |  Tehty SudokuRepository luokka  |
-| 25.4.      | 4        | muokattu GameService luokkaa toimimaan SudokuRepository luokan ja muiden muutosten kanssa  |
+| 25.4.      | 6        | muokattu GameService luokkaa toimimaan SudokuRepository luokan ja muiden muutosten kanssa |
 |            |          |       |
-|  Yhteensä  | 48       |       |
+|  Yhteensä  | 50       |       |
