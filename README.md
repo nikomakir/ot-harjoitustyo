@@ -14,6 +14,9 @@ Harjoitustyön aiheena on Sudoku -peli.
  - [arkkitehtuuri](./dokumentaatio/arkkitehtuuri.md)
  
 ## Asennus
+
+Lataa sovellus [tästä](https://github.com/nikomar/ot-harjoitustyo/releases/latest).
+
 Asenna riippuvuudet komennolla:
 ```
 poetry install
