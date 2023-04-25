@@ -24,7 +24,7 @@ class Menu:
         new_game_button = self._font.render(
             "New Game", True, "black", self._button_color)
         resume_button = self._font.render(
-            "Resume Game", True, "gray", self._button_color)
+            "Resume Game", True, "black", self._button_color)
         quit_button = self._font.render(
             "Quit", True, "black", self._button_color)
         self._new_game_rect = new_game_button.get_rect()
