@@ -13,7 +13,7 @@ Sovellus on tunnettu Sudoku-peli. Pelissä käyttäjä täyttää 9x9 ruudukon s
 
 ## Perusversion toiminnallisuus
 
-- Käyttäjä voi luoda uuden pelin *(tehty)* tai jatkaa edellisestä pelistä, jos sellainen on kesken
+- Käyttäjä voi luoda uuden pelin *(tehty)* tai jatkaa edellisestä pelistä *(tehty)*, jos sellainen on kesken
   - peli arpoo uuden ruudukon pohjan. Ruudukossa on valmiiksi täytettynä numeroita, jotta sen voi ratkaista *(tehty)*
 - Pelissä käyttäjä täyttää ruudukkoon puuttuvat numerot *(tehty)*
   - käyttäjän itse täyttämiä numeroita voi muutella, mutta valmiina olevia ei *(tehty)*

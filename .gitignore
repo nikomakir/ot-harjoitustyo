@@ -1,3 +1,7 @@
 __pycache__
 .coverage
 htmlcov
+
+#data files
+data/sudoku.csv
+data/test-sudoku.csv

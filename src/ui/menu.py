@@ -1,17 +1,18 @@
 import pygame
-from service.grid import GameGrid
+from service.game_service import game_service, NoSavedGame
 from ui.renderer import Renderer
 from ui.gameloop import GameLoop
 
 
 class Menu:
-    def __init__(self, display, width, eventqueue):
+    def __init__(self, display, width, eventqueue, game_service=game_service):
         self._display = display
         self._backround_color = (251, 247, 245)
         self._events = eventqueue
         self._button_color = (255, 200, 200)
         self._font = pygame.font.SysFont('Comic Sans MS', 50)
         self._width = width
+        self._game_service = game_service
 
     def initialize(self):
         self._render()
@@ -52,10 +53,19 @@ class Menu:
                     if quit_collide:
                         running = False
                     elif new_game_collide:
-                        game_grid = GameGrid()
-                        renderer = Renderer(self._display, game_grid)
-                        game_loop = GameLoop(game_grid, renderer, self._events)
+                        self._game_service.start_new_game()
+                        renderer = Renderer(self._display, self._game_service)
+                        game_loop = GameLoop(
+                            self._game_service, renderer, self._events)
                         game_loop.start()
                         running = False
                     elif resume_button_collide:
-                        pass
+                        try:
+                            self._game_service.load_game()
+                        except NoSavedGame:
+                            continue
+                        renderer = Renderer(self._display, self._game_service)
+                        game_loop = GameLoop(
+                            self._game_service, renderer, self._events)
+                        game_loop.start()
+                        running = False

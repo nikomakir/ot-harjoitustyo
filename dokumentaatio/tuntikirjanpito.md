@@ -12,5 +12,9 @@
 | 15.4.      | 3        | aloitusvalikon toteutus |
 | 16.4.      | 5        | Sudoku -luokan muokkaus |
 | 17.4.      | 6        | Yhdistetty menu -valikko peliin ja lisätty testejä |
+| 21.4.      | 2        | Perehdytty ja suunniteltu tallennustapaa sudokuruudukolle  |
+| 23.4.      | 2        | Aloitettu SudokuRepository luokan teko  |
+| 24.4.      | 6        |  Tehty SudokuRepository luokka  |
+| 25.4.      | 4        | muokattu GameService luokkaa toimimaan SudokuRepository luokan ja muiden muutosten kanssa  |
 |            |          |       |
-|  Yhteensä  | 34       |       |
+|  Yhteensä  | 48       |       |
