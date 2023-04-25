@@ -32,12 +32,12 @@ class Renderer:
 
         for i in range(9):
             for j in range(9):
-                if 0 < self._grid._grid._start[i][j]:
+                if 0 < self._grid._grid.start[i][j]:
                     value = self._starting_font.render(
-                        str(self._grid._grid._start[i][j]), True, self._original_grid_color)
+                        str(self._grid._grid.start[i][j]), True, self._original_grid_color)
                     self._display.blit(value, ((j+1)*50+15, (i+1)*50))
-                if self._grid._grid._grid[i][j] != self._grid._grid._start[i][j]:
+                if self._grid._grid.grid[i][j] != self._grid._grid.start[i][j]:
                     value = self._starting_font.render(
-                        str(self._grid._grid._grid[i][j]), True, self._number_color)
+                        str(self._grid._grid.grid[i][j]), True, self._number_color)
                     self._display.blit(value, ((j+1)*50+15, (i+1)*50))
         pygame.display.update()
