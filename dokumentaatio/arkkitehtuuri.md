@@ -2,14 +2,16 @@
 
 ## Sovelluslogiikka
 
+Sovelluslogiikan muodostavat logiikkaluokka GameService ja Sudoku -luokka, joka kuvastaa sudokuruudukkoa:
+
 ```mermaid
 classDiagram
-   GameGrid "1" -- "1" Sudoku
+   GameService "0..1" <-- "1" Sudoku
    class Sudoku{
     grid 
     start
    }
-   class GameGrid{
+   class GameService{
     grid(Sudoku)
     pos
     complete
@@ -17,3 +19,32 @@ classDiagram
    }
 
 ``` 
+GameService -luokka vastaa myös kokonaisuudesta. Käyttöliittymä kutsuu sen metodeja. _GameService_ hoitaa pelin tallennusta _repositories_ -kansion _SudokuRepository_ -luokan avulla, jonka se saa konstruktorikutsussa.
+
+## Tietojen pysyväistallennus
+
+Repositories -kansion _SudokuRepository_ -luokka vastaa keskeneräisen pelin tallentamisesta CSV -tiedostoon. 
+
+### Tiedostot
+
+Sovellus tallentaa keskeneräisen pelin erilliseen tiedostoon. Tiedoston nimi on määritelty sovelluksen juureen sijoitetussa konfiguraatiotiedostossa [.env](.env).
+
+## Päätoiminnallisuudet
+
+### Uuden pelin aloittaminen
+
+Kun käyttäjä valitsee aloitusvalikossa painikkeen "New Game", etenee sovellus näin:
+
+```mermaid
+sequenceDiagram
+   actor User
+   User->>UI: click "New Game" button
+   UI->>GameService: start_new_game()
+   GameService->>Sudoku: Sudoku(50)
+   Sudoku->>Sudoku: initialize_grid(50)
+   Sudoku-->>GameService: Sudoku
+   GameService-->>UI: Sudoku
+   UI->UI: gameloop.start()
+   
+```
+Käyttöliittymää kuvaava luokka UI sisältää muitakin luokkia, kuten GameLoop ja Renderer, jotka hoitavat pelin tapahtumien käsittelyn ja kuvan piirtämisen. Kun uusi peli on alustettu logiikkaluokassa GameService, niin käyttöliittymä aloittaa pelisilmukan.
