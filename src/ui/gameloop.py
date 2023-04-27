@@ -51,6 +51,6 @@ class GameLoop:
                     self._service.insert_number(9)
                 if event.key in (pygame.K_DELETE, pygame.K_BACKSPACE):
                     self._service.insert_number(0)
-      
+
     def _render(self):
         self._renderer.render()

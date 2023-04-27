@@ -33,26 +33,24 @@ class SudokuRepository:
 
         grid = []
         start = []
-        filled = None
+        filled = 0
 
         with open(self._file_path, encoding="utf8") as file:
-            grid_to_append = False
+            start_to_append = False
             for row in file:
                 if row.startswith("filled"):
                     filled = int(row.strip().split(";")[1])
                     continue
                 if row.startswith("grid"):
-                    grid_to_append = True
                     continue
                 if row.startswith("start"):
-                    grid_to_append = False
+                    start_to_append = True
                     continue
-                row.replace("\n", "")
-                numbers = row.split(";")
-                if grid_to_append:
-                    grid.append([int(number) for number in numbers])
-                else:
+                numbers = row.strip().split(";")
+                if start_to_append:
                     start.append([int(number) for number in numbers])
+                else:
+                    grid.append([int(number) for number in numbers])
 
         return grid, start, filled
 

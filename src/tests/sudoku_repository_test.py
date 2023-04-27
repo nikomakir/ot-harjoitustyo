@@ -1,6 +1,7 @@
 import unittest
 from repositories.sudoku_repository import sudoku_repository
 
+
 class TestSudokuRepository(unittest.TestCase):
     def setUp(self):
         sudoku_repository.delete()
@@ -15,17 +16,17 @@ class TestSudokuRepository(unittest.TestCase):
                      [8, 3, 6, 9, 2, 4, 1, 5, 7],
                      [2, 1, 9, 8, 5, 7, 4, 3, 6],
                      [7, 4, 5, 3, 1, 6, 8, 9, 2]]
-        
-        self.start =   [[0, 2, 3, 6, 7, 8, 9, 4, 5],
-                        [5, 8, 4, 2, 3, 9, 7, 6, 1],
-                        [9, 6, 7, 1, 4, 5, 3, 2, 8],
-                        [3, 7, 2, 4, 6, 1, 5, 8, 9],
-                        [6, 9, 1, 5, 8, 3, 2, 7, 4],
-                        [4, 5, 8, 7, 9, 2, 6, 1, 3],
-                        [8, 3, 6, 9, 2, 4, 1, 5, 7],
-                        [2, 1, 9, 8, 5, 7, 4, 3, 6],
-                        [7, 4, 5, 3, 1, 6, 8, 9, 2]]
-        
+
+        self.start = [[0, 2, 3, 6, 7, 8, 9, 4, 5],
+                      [5, 8, 4, 2, 3, 9, 7, 6, 1],
+                      [9, 6, 7, 1, 4, 5, 3, 2, 8],
+                      [3, 7, 2, 4, 6, 1, 5, 8, 9],
+                      [6, 9, 1, 5, 8, 3, 2, 7, 4],
+                      [4, 5, 8, 7, 9, 2, 6, 1, 3],
+                      [8, 3, 6, 9, 2, 4, 1, 5, 7],
+                      [2, 1, 9, 8, 5, 7, 4, 3, 6],
+                      [7, 4, 5, 3, 1, 6, 8, 9, 2]]
+
     def test_write(self):
         sudoku_repository.write(self.filled, self.grid, self.start)
         grid, start, filled = sudoku_repository.load()
@@ -66,4 +67,3 @@ class TestSudokuRepository(unittest.TestCase):
         self.assertEqual(filled, 0)
         self.assertEqual(len(grid), 0)
         self.assertEqual(len(start), 0)
-    
