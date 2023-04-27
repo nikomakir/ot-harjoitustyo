@@ -13,6 +13,10 @@ class Renderer:
 
     def render(self):
         self._display.fill(self._background_color)
+        back_text = self._starting_font.render("Esc = Back", True, "red")
+        back_text_rect = back_text.get_rect()
+        back_text_rect.center = (550//2, 20)
+        self._display.blit(back_text, back_text_rect)
         x, y = self._game_service.get_pos()
         pygame.draw.rect(self._display, self._choice_color,
                          pygame.Rect(x*50+50, y*50+50, 50, 50))

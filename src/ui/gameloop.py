@@ -9,6 +9,7 @@ class GameLoop:
         self._clock = pygame.time.Clock()
 
     def start(self):
+        self._quit = True
         self._render()
         while True:
             if self._hande_events() is False:
@@ -17,6 +18,7 @@ class GameLoop:
             self._clock.tick(30)
 
         self._service.save_game()
+        return self._quit
 
     def _hande_events(self):
         for event in self._event_queue.get():
@@ -51,6 +53,9 @@ class GameLoop:
                     self._service.insert_number(9)
                 if event.key in (pygame.K_DELETE, pygame.K_BACKSPACE):
                     self._service.insert_number(0)
+                if event.key == pygame.K_ESCAPE:
+                    self._quit = False
+                    return False
 
     def _render(self):
         self._renderer.render()

@@ -20,7 +20,6 @@ class Menu:
 
     def _render(self):
         self._display.fill(self._backround_color)
-        pygame.display.update()
         new_game_button = self._font.render(
             "New Game", True, "black", self._button_color)
         resume_button = self._font.render(
@@ -57,8 +56,10 @@ class Menu:
                         renderer = Renderer(self._display, self._game_service)
                         game_loop = GameLoop(
                             self._game_service, renderer, self._events)
-                        game_loop.start()
-                        running = False
+                        if game_loop.start():
+                            running = False
+                        else:
+                            self._render()
                     elif resume_button_collide:
                         try:
                             self._game_service.load_game()
@@ -67,5 +68,7 @@ class Menu:
                         renderer = Renderer(self._display, self._game_service)
                         game_loop = GameLoop(
                             self._game_service, renderer, self._events)
-                        game_loop.start()
-                        running = False
+                        if game_loop.start():
+                            running = False
+                        else:
+                            self._render()
