@@ -1,5 +1,5 @@
 import unittest
-from service.game_service import GameService
+from service.game_service import GameService, NoSavedGame
 from entities.sudoku import Sudoku
 
 
@@ -182,3 +182,115 @@ class TestGameGrid(unittest.TestCase):
         self.game._filled = 80
         self.game.insert_number(1)
         self.assertTrue(self.game._complete)
+
+    def test_start_new_game(self):
+        self.game.start_new_game()
+        counted_filled= 81
+        for i in range(9):
+            for j in range(9):
+                if self.game._grid.grid[i][j] == 0:
+                    counted_filled -= 1
+        self.assertEqual(self.game._filled, counted_filled)
+        self.assertFalse(self.game._complete)
+
+    def test_load_empty_game(self):
+        self.game._repository.delete()
+        with self.assertRaises(NoSavedGame):
+            self.game.load_game()
+
+    def test_load_valid_game(self):
+        self.game._repository.delete()
+        self.game._grid = Sudoku(0, [[0, 2, 3, 6, 7, 8, 9, 4, 5],
+                                 [5, 8, 4, 2, 3, 9, 7, 6, 1],
+                                 [9, 6, 7, 1, 4, 5, 3, 2, 8],
+                                 [3, 7, 2, 4, 6, 1, 5, 8, 9],
+                                 [6, 9, 1, 5, 8, 3, 2, 7, 4],
+                                 [4, 5, 8, 7, 9, 2, 6, 1, 3],
+                                 [8, 3, 6, 9, 2, 4, 1, 5, 7],
+                                 [2, 1, 9, 8, 5, 7, 4, 3, 6],
+                                 [7, 4, 5, 3, 1, 6, 8, 9, 2]],
+                                 [[0, 2, 3, 6, 7, 8, 9, 4, 5],
+                                  [5, 8, 4, 2, 3, 9, 7, 6, 1],
+                                  [9, 6, 7, 1, 4, 5, 3, 2, 8],
+                                  [3, 7, 2, 4, 6, 1, 5, 8, 9],
+                                  [6, 9, 1, 5, 0, 3, 2, 7, 4],
+                                  [4, 5, 8, 7, 9, 2, 6, 1, 3],
+                                  [8, 3, 6, 9, 2, 4, 1, 5, 7],
+                                  [2, 1, 0, 8, 5, 7, 0, 3, 6],
+                                  [7, 4, 5, 3, 1, 6, 8, 9, 2]])
+        self.game._filled = 80
+        self.game.save_game()
+        self.game._filled = 5
+        self.game.load_game()
+        self.assertEqual(self.game._filled, 80)
+        self.assertFalse(self.game._complete)
+        self.assertEqual(self.game._grid.grid, [[0, 2, 3, 6, 7, 8, 9, 4, 5],
+                                 [5, 8, 4, 2, 3, 9, 7, 6, 1],
+                                 [9, 6, 7, 1, 4, 5, 3, 2, 8],
+                                 [3, 7, 2, 4, 6, 1, 5, 8, 9],
+                                 [6, 9, 1, 5, 8, 3, 2, 7, 4],
+                                 [4, 5, 8, 7, 9, 2, 6, 1, 3],
+                                 [8, 3, 6, 9, 2, 4, 1, 5, 7],
+                                 [2, 1, 9, 8, 5, 7, 4, 3, 6],
+                                 [7, 4, 5, 3, 1, 6, 8, 9, 2]])
+        self.assertEqual(self.game._grid.start,   [[0, 2, 3, 6, 7, 8, 9, 4, 5],
+                                  [5, 8, 4, 2, 3, 9, 7, 6, 1],
+                                  [9, 6, 7, 1, 4, 5, 3, 2, 8],
+                                  [3, 7, 2, 4, 6, 1, 5, 8, 9],
+                                  [6, 9, 1, 5, 0, 3, 2, 7, 4],
+                                  [4, 5, 8, 7, 9, 2, 6, 1, 3],
+                                  [8, 3, 6, 9, 2, 4, 1, 5, 7],
+                                  [2, 1, 0, 8, 5, 7, 0, 3, 6],
+                                  [7, 4, 5, 3, 1, 6, 8, 9, 2]])
+        
+    def test_save_game(self):
+        self.game._repository.delete()
+
+        self.game._grid = Sudoku(0, [[0, 2, 3, 6, 7, 8, 9, 4, 5],
+                                 [5, 8, 4, 2, 3, 9, 7, 6, 1],
+                                 [9, 6, 7, 1, 4, 5, 3, 2, 8],
+                                 [3, 7, 2, 4, 6, 1, 5, 8, 9],
+                                 [6, 9, 1, 5, 8, 3, 2, 7, 4],
+                                 [4, 5, 8, 7, 9, 2, 6, 1, 3],
+                                 [8, 3, 6, 9, 2, 4, 1, 5, 7],
+                                 [2, 1, 9, 8, 5, 7, 4, 3, 6],
+                                 [7, 4, 5, 3, 1, 6, 8, 9, 2]],
+                                 [[0, 2, 3, 6, 7, 8, 9, 4, 5],
+                                  [5, 8, 4, 2, 3, 9, 7, 6, 1],
+                                  [9, 6, 7, 1, 4, 5, 3, 2, 8],
+                                  [3, 7, 2, 4, 6, 1, 5, 8, 9],
+                                  [6, 9, 1, 5, 0, 3, 2, 7, 4],
+                                  [4, 5, 8, 7, 9, 2, 6, 1, 3],
+                                  [8, 3, 6, 9, 2, 4, 1, 5, 7],
+                                  [2, 1, 0, 8, 5, 7, 0, 3, 6],
+                                  [7, 4, 5, 3, 1, 6, 8, 9, 2]])
+        self.game._filled = 80
+        self.game.save_game()
+        self.game._filled = 4
+        self.game.load_game()
+        self.assertEqual(self.game._filled, 80)
+        self.assertEqual(self.game._grid.grid,[[0, 2, 3, 6, 7, 8, 9, 4, 5],
+                                 [5, 8, 4, 2, 3, 9, 7, 6, 1],
+                                 [9, 6, 7, 1, 4, 5, 3, 2, 8],
+                                 [3, 7, 2, 4, 6, 1, 5, 8, 9],
+                                 [6, 9, 1, 5, 8, 3, 2, 7, 4],
+                                 [4, 5, 8, 7, 9, 2, 6, 1, 3],
+                                 [8, 3, 6, 9, 2, 4, 1, 5, 7],
+                                 [2, 1, 9, 8, 5, 7, 4, 3, 6],
+                                 [7, 4, 5, 3, 1, 6, 8, 9, 2]])
+        self.assertEqual(self.game._grid.start,  [[0, 2, 3, 6, 7, 8, 9, 4, 5],
+                                  [5, 8, 4, 2, 3, 9, 7, 6, 1],
+                                  [9, 6, 7, 1, 4, 5, 3, 2, 8],
+                                  [3, 7, 2, 4, 6, 1, 5, 8, 9],
+                                  [6, 9, 1, 5, 0, 3, 2, 7, 4],
+                                  [4, 5, 8, 7, 9, 2, 6, 1, 3],
+                                  [8, 3, 6, 9, 2, 4, 1, 5, 7],
+                                  [2, 1, 0, 8, 5, 7, 0, 3, 6],
+                                  [7, 4, 5, 3, 1, 6, 8, 9, 2]])
+        
+    def test_save_completed_game(self):
+        self.game._complete = True
+        self.game.save_game()
+        with self.assertRaises(NoSavedGame):
+            self.game.load_game()
+

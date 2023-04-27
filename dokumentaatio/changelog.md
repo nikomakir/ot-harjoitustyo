@@ -27,3 +27,7 @@
 - muutettu Sudoku -luokan toimintaa siten, että oletusarvoisesti luo uuden ruudukon dokusan kirjastolla
     - voi antaa argumentteina valmiit listat, joiden mukaan luokka toimii normaalisti
     
+## Viikko 6
+
+- lisätty testit SudokuRepository -luokalle
+- lisätty GameService -luokalle testejä
