@@ -3,17 +3,31 @@ import pygame
 
 class Renderer:
     def __init__(self, display, game_service):
+        """Peliruudukon piirtämisestä vastaava luokka.
+        Attributes:
+            display : pygame näyttö
+            game_service : sovelluslogiikasta vastaava luokka GameService
+            background_color : näytön taustaväri
+            font : fontti, jolla numerot piirretään
+            original_grid_color : väri, jolla alussa valmiina olevat numerot piirretään
+            number_color :  väri, jolla itse syötettävät numerot piirretään
+            coice_color : väri, jolla valittu ruutu piirretään
+
+        Args:
+            display : pygame näyttö
+            game_service (GameService): Sovelluslogiikasta vastaava luokka GameService.
+        """
         self._display = display
         self._game_service = game_service
         self._background_color = (251, 247, 245)
-        self._starting_font = pygame.font.SysFont('Comic Sans MS', 35)
+        self._font = pygame.font.SysFont('Comic Sans MS', 35)
         self._original_grid_color = (0, 0, 0)
         self._number_color = (52, 31, 151)
         self._choice_color = (255, 200, 200)
 
     def render(self):
         self._display.fill(self._background_color)
-        back_text = self._starting_font.render("Esc = Back", True, "red")
+        back_text = self._font.render("Esc = Back", True, "red")
         back_text_rect = back_text.get_rect()
         back_text_rect.center = (550//2, 20)
         self._display.blit(back_text, back_text_rect)
@@ -35,11 +49,11 @@ class Renderer:
         for i in range(9):
             for j in range(9):
                 if 0 < self._game_service._grid.start[i][j]:
-                    value = self._starting_font.render(
+                    value = self._font.render(
                         str(self._game_service._grid.start[i][j]), True, self._original_grid_color)
                     self._display.blit(value, ((j+1)*50+15, (i+1)*50))
                 if self._game_service._grid.grid[i][j] != self._game_service._grid.start[i][j]:
-                    value = self._starting_font.render(
+                    value = self._font.render(
                         str(self._game_service._grid.grid[i][j]), True, self._number_color)
                     self._display.blit(value, ((j+1)*50+15, (i+1)*50))
         pygame.display.update()

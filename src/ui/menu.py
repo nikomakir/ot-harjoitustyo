@@ -5,7 +5,26 @@ from ui.gameloop import GameLoop
 
 
 class Menu:
+    """Aloitusvalikkoa kuvaava luokka.
+    """
+
     def __init__(self, display, width, eventqueue, game_service=game_service):
+        """Attributes:
+            display : pygame näyttö
+            backround_color : näytön taustaväri
+            events : tapahtumien käsittelyluokka EventQueue
+            button_color : Valikon painikkeiden väri
+            font : fontti, jolla näytön tekstit on kirjoitettu
+            width : näytön leveys (näyttö on neliö, eli sama korkeus)
+            game_service : sovelluslogiikasta vastaava luokka GameService
+
+        Args:
+            display : pygame näyttö
+            width (int): näytön leveys ja korkeus
+            eventqueue (EventQueue): pygame tapahtumia kuvaava luokka EventQueue
+            game_service (GameService, optional): Sovelluslogiikasta vastaava luokka. Oletusarvona sama game_service
+            kuin mitä muutkin luokat käyttävät.
+        """
         self._display = display
         self._backround_color = (251, 247, 245)
         self._events = eventqueue
@@ -15,6 +34,8 @@ class Menu:
         self._game_service = game_service
 
     def initialize(self):
+        """Metodi, joka aloittaa aloitusruudukon piirtämisen ja tapahtumien käsittelyn.
+        """
         self._render()
         self._menu_loop()
 

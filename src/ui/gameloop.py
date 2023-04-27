@@ -2,17 +2,39 @@ import pygame
 
 
 class GameLoop:
+    """Peliruudukkotilassa pelisilmukkaa kuvaava luokka.
+    """
+
     def __init__(self, service, renderer, event_queue):
+        """Attributes: 
+            serice : GameService sovelluslogiikasta vastaava luokka
+            renderer : kuvan piirtämisestä vastaava luokka Renderer
+            event_queue : pygame tapahtumien käsittelyä varten luokka EventQueue
+            clock : pygame kello, jolla tahdistetaan kuvan piirtäminen 30 kuvaan sekunnissa.        
+
+        Args:
+            service (GameService): Sovelluslogiikasta vastaava luokka GameService.
+            renderer (Renderer): Kuvan piirtämisestä vastaava luokka Renderer
+            event_queue (EventQueue): Pygame tapahtumien käsittelyä varten luokka EventQueue
+        """
         self._service = service
         self._renderer = renderer
         self._event_queue = event_queue
         self._clock = pygame.time.Clock()
 
     def start(self):
+        """Metodi, joka aloittaa pelitilan. Silmukassa kutsuu metodia _handle_events, kunnes
+        halutaan poistua pelitilasta. Kutsuu _render metodia piirtämistä varten ja tahdistaa
+        kellon silmukassa. Poistuessa kutsuu GameService luokan metodia save_game() ja palauttaa
+        koko pelistä poitumisen halun muodossa True tai False, jos palataan vain aloitusruudulle.
+
+        Returns:
+            Boolean: Palauttaa tiedon, siirrytäänkö aloitusruudulle vai kokonaan pois pelistä.
+        """
         self._quit = True
         self._render()
         while True:
-            if self._hande_events() is False:
+            if self._handle_events() is False:
                 break
             self._render()
             self._clock.tick(30)
@@ -20,7 +42,12 @@ class GameLoop:
         self._service.save_game()
         return self._quit
 
-    def _hande_events(self):
+    def _handle_events(self):
+        """Tapahtumien käsittelystä vastaava metodi.
+
+        Returns:
+            Boolan: Palauttaa False metodille start(), kun halutaan poistua pelistä.
+        """
         for event in self._event_queue.get():
             if event.type == pygame.QUIT:
                 return False

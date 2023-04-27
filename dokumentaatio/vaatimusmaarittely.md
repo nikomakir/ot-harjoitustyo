@@ -20,7 +20,7 @@ Sovellus on tunnettu Sudoku-peli. Pelissä käyttäjä täyttää 9x9 ruudukon s
   - jos täyttää väärän numeron, niin se kyllä onnistuu, mutta numero muuttuu *punaiseksi* siinä vaiheessa, kun jokin pelin säännön ehdoista ei selvästi toteudu näkyvillä ja täytetyillä numeroilla
 - Peli päättyy, kun ruudukon kaikki numerot on täytetty oikein
   - muistiin jää paras suoritusaika jokaiselta vaikeustasolta
-  - pelistä voi palata aloitusruudulle milloin tahansa, jolloin keskeneräinen peli jää muistiin
+  - pelistä voi palata aloitusruudulle milloin tahansa, jolloin keskeneräinen peli jää muistiin *(tehty)*
 
 ## Jatkokehitysideoita
 

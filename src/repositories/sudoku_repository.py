@@ -3,13 +3,30 @@ from config import SUDOKU_FILEPATH
 
 
 class SudokuRepository:
+    """Sudoku -ruudukon tallentamisesta vastaava luokka.
+    """
+
     def __init__(self, file_path):
+        """Sudoku -ruudukon tallentamisesta vastaava luokka.
+
+        Args:
+            file_path : absoluuttinen tiedostopolku CSV -tiedostoon, jonne tiedot tallennetaan. 
+        """
         self._file_path = file_path
 
     def _ensure_file_exists(self):
         Path(self._file_path).touch()
 
     def write(self, filled, grid, start):
+        """Tallentamisesta vastaava metodi.Tallentaa ensimmäiselle riville filled arvon ja
+        toiselta riviltä lähtien peliruudukon matriisin rivi kerrallaan. Väleissä rivi tekstiä, 
+        joka kertoo mistä tiedosta on kyse.
+
+        Args:
+            filled (int): GameService -luokan attribuutti self._filled arvo.
+            grid (list): Peliruudukko listana.
+            start (list): Aloitusruudukko listana.
+        """
         self._ensure_file_exists()
 
         with open(self._file_path, "w", encoding="utf8") as file:
@@ -29,6 +46,14 @@ class SudokuRepository:
                 file.write(to_be_written[:-1] + "\n")
 
     def load(self):
+        """Tallennetun pelin lataamisesta eli lukemisesta vastaava metodi.
+        Aluksi varmistetaan, että tiedosto on olemassa, minkä jälkeen luetaan
+        tiedosto rivi kerrallaan ja täytetään tiedot muuttujiin grid, start ja filled.
+
+        Returns:
+            tuple: peli- ja aloitusruudukko listana ja GameService luokan tarvitsema self._filled 
+            arvo kokonaislukuna. 
+        """
         self._ensure_file_exists()
 
         grid = []
@@ -55,6 +80,9 @@ class SudokuRepository:
         return grid, start, filled
 
     def delete(self):
+        """Metodi, joka tyhjentää tiedoston tiedot. Kutsuu metodia write()
+        tyhjillä arvoilla.
+        """
         self.write(0, [], [])
 
 

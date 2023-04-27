@@ -16,6 +16,6 @@
 | 23.4.      | 2        | Aloitettu SudokuRepository luokan teko  |
 | 24.4.      | 6        |  Tehty SudokuRepository luokka  |
 | 25.4.      | 6        | muokattu GameService luokkaa toimimaan SudokuRepository luokan ja muiden muutosten kanssa |
-| 27.4       | 3        | lisätty testit SudokuRepository ja GameSevice luokille, muokattu GameLoop ja Menu -luokkia (takaisin paluu mahd.) |
+| 27.4       | 4        | lisätty testit SudokuRepository ja GameSevice luokille, muokattu GameLoop ja Menu -luokkia (takaisin paluu mahd.) |
 |            |          |       |
-|  Yhteensä  | 53       |       |
+|  Yhteensä  | 54       |       |
