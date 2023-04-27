@@ -31,3 +31,4 @@
 
 - lisätty testit SudokuRepository -luokalle
 - lisätty GameService -luokalle testejä
+- lisätty mahdollisuus palata peliruudulta aloitusruudulle
