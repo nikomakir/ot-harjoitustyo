@@ -1,5 +1,13 @@
 # Arkkitehtuuri
 
+## Rakenne
+
+Sovelluksen rakennetta kuvaa pakkausrakenne:
+
+![Pakkausrakenne](./Kuvat/Pakkausrakenne.drawio.png)
+
+_UI_ sisältää käyttöliittymästä vastaavan koodin, _service_ sovelluslogiikasta vastaavan koodin, _entities_ pelin Sudoku -ruudukkoa kuvaavan koodin ja _repositories_ tiedon pysyväistallennuksesta vastaavan koodin.
+
 ## Sovelluslogiikka
 
 Sovelluslogiikan muodostavat logiikkaluokka GameService ja Sudoku -luokka, joka kuvastaa sudokuruudukkoa:
@@ -46,6 +54,7 @@ start\
 .\
 .\
 .\
+
 Otsikot kertovat, mistä tiedosta on kyse ja sitten ruudukon rivit ovat omalla riveillään.
 
 ### Tiedostot
@@ -83,6 +92,7 @@ Käyttäjän painaessa aloitusvalikon painiketta "Resume Game", toimii sovellus 
    UI->>GameService: load_game()
    GameService->>SudokuRepository: load()
    SudokuRepository-->>GameService: grid, start, filled
+   GameService-->>UI: (NoSavedGame(Exception))
    UI->>Renderer: Renderer
    Renderer-->>UI: Renderer
    UI->>GameLoop: GameLoop
@@ -92,7 +102,7 @@ Käyttäjän painaessa aloitusvalikon painiketta "Resume Game", toimii sovellus 
    GameLoop->GameLoop: start()
    GameLoop-->>UI: quit(True/False)
    deactivate UI
-   
-   
-   
+     
 ```   
+Tässä on kuvattuna tapahtuma, kun käyttäjä painaa Resume Game -nappia. Jos peliä ei ole tallennettuna, GameService nostaa NoSavedGame -poikkeuksen ja UI:n aloitusvalikossa ei tapahdu mitään. Muulloin tapahtumat etenevät kaavion tavoin.
+
