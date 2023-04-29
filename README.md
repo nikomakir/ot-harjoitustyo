@@ -4,6 +4,7 @@
 Harjoitustyön aiheena on Sudoku -peli.
 
 ## Dokumentaatio
+ - [käyttöohje](./dokumentaatio/kayttoohje.md)
 
  - [tuntikirjanpito.md](./dokumentaatio/tuntikirjanpito.md)
 
@@ -13,9 +14,11 @@ Harjoitustyön aiheena on Sudoku -peli.
  
  - [arkkitehtuuri](./dokumentaatio/arkkitehtuuri.md)
  
+## Lataaminen
+- [Release 1](https://github.com/nikomakir/ot-harjoitustyo/releases/tag/viikko5)
+- [Release 2](https://github.com/nikomakir/ot-harjoitustyo/releases/tag/viikko6)
+ 
 ## Asennus
-
-Lataa sovellus [tästä](https://github.com/nikomakir/ot-harjoitustyo/releases/tag/viikko5).
 
 Asenna riippuvuudet komennolla:
 ```
