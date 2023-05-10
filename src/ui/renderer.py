@@ -25,11 +25,15 @@ class Renderer:
         self._number_color = (52, 31, 151)
         self._choice_color = (255, 200, 200)
 
+    def _get_screen_size(self):
+        return self._display.get_size()
+
     def render(self):
+        width, height = self._get_screen_size()
         self._display.fill(self._background_color)
         back_text = self._font.render("Esc = Back", True, "red")
         back_text_rect = back_text.get_rect()
-        back_text_rect.center = (550//2, 20)
+        back_text_rect.center = (width//2, height//27)
         self._display.blit(back_text, back_text_rect)
         x, y = self._game_service.get_pos()
         pygame.draw.rect(self._display, self._choice_color,
@@ -56,4 +60,14 @@ class Renderer:
                     value = self._font.render(
                         str(self._game_service._grid.grid[row][column]), True, self._number_color)
                     self._display.blit(value, ((column+1)*50+15, (row+1)*50))
+        self._render_finished_game()
         pygame.display.update()
+
+
+    def _render_finished_game(self):
+        if self._game_service.check_if_complete():
+            width, heigth = self._get_screen_size()
+            ending_text = self._font.render("Congratulations!", True, "black", "red")
+            ending_text_rect = ending_text.get_rect()
+            ending_text_rect.center = (width//2,heigth//2)
+            self._display.blit(ending_text,ending_text_rect)
