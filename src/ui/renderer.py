@@ -35,25 +35,25 @@ class Renderer:
         pygame.draw.rect(self._display, self._choice_color,
                          pygame.Rect(x*50+50, y*50+50, 50, 50))
 
-        for i in range(10):
-            if i % 3 == 0:
+        for line in range(10):
+            if line % 3 == 0:
                 pygame.draw.line(self._display, (0, 0, 0),
-                                 (50+50*i, 50), (50+50*i, 500), 5)
+                                 (50+50*line, 50), (50+50*line, 500), 5)
                 pygame.draw.line(self._display, (0, 0, 0),
-                                 (50, 50+50*i), (500, 50+50*i), 5)
+                                 (50, 50+50*line), (500, 50+50*line), 5)
             pygame.draw.line(self._display, (0, 0, 0),
-                             (50+50*i, 50), (50+50*i, 500), 2)
+                             (50+50*line, 50), (50+50*line, 500), 2)
             pygame.draw.line(self._display, (0, 0, 0),
-                             (50, 50+50*i), (500, 50+50*i), 2)
+                             (50, 50+50*line), (500, 50+50*line), 2)
 
-        for i in range(9):
-            for j in range(9):
-                if 0 < self._game_service._grid.start[i][j]:
+        for row in range(9):
+            for column in range(9):
+                if 0 < self._game_service._grid.start[row][column]:
                     value = self._font.render(
-                        str(self._game_service._grid.start[i][j]), True, self._original_grid_color)
-                    self._display.blit(value, ((j+1)*50+15, (i+1)*50))
-                if self._game_service._grid.grid[i][j] != self._game_service._grid.start[i][j]:
+                        str(self._game_service._grid.start[row][column]), True, self._original_grid_color)
+                    self._display.blit(value, ((column+1)*50+15, (row+1)*50))
+                if self._game_service._grid.grid[row][column] != self._game_service._grid.start[row][column]:
                     value = self._font.render(
-                        str(self._game_service._grid.grid[i][j]), True, self._number_color)
-                    self._display.blit(value, ((j+1)*50+15, (i+1)*50))
+                        str(self._game_service._grid.grid[row][column]), True, self._number_color)
+                    self._display.blit(value, ((column+1)*50+15, (row+1)*50))
         pygame.display.update()
