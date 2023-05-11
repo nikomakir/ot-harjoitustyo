@@ -9,7 +9,7 @@ def main():
     pygame.display.set_caption("Sudoku")
     pygame.init()
     event_queue = EventQueue()
-    menu = Menu(display, width, event_queue)
+    menu = Menu(display, event_queue)
     menu.initialize()
     pygame.quit()
 

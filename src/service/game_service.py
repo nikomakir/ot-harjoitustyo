@@ -1,5 +1,6 @@
 from entities.sudoku import Sudoku
 from repositories.sudoku_repository import sudoku_repository as default_sudoku_repository
+from repositories.difficulty_repository import difficulty_repository as default_difficulty_repository
 
 
 class NoSavedGame(Exception):
@@ -10,7 +11,7 @@ class GameService:
     """Sovelluslogiikasta vastaava luokka.
     """
 
-    def __init__(self, sudoku_repository=default_sudoku_repository):
+    def __init__(self, sudoku_repository=default_sudoku_repository, difficulty_repository=default_difficulty_repository):
         """Sovelluslogiikasta vastaava luokka.
 
         Attributes:
@@ -19,27 +20,40 @@ class GameService:
             vaakatason ja y pystytason koordinaatit
             complete : Boolean arvo, joka kuvastaa pelin tilaa (kesken/valmis)
             repository: Tallentamisesta vastaava luokka SudokuRepository
+            difficulty_repository: Pelin vaikeustason tallennuksesta ja lataamisesta vastaava luokka
             filled : kaikista sudokuruudukon 81 luvusta ne luvut, jotka on 
             kyseisenä hetkenä täytetty. 
 
         Args:
             sudoku_repository (optional): Tallentamisesta vastaava luokka SudokuRepository
+            difficulty_repository (optional): Vaikeustason tallentamisesta vastaava luokka DifficultyRepository
         """
         self._grid = None
         self._pos = [0, 0]
         self._complete = False
         self._repository = sudoku_repository
+        self.difficulty_repository = difficulty_repository
         self._filled = None
 
-    def start_new_game(self, difficulty=50):
-        """Metodi, joka aloittaa uuden pelin. Luo Sudoku -luokan ja asettaa sen
+    def _get_difficulty(self):
+        difficulty = self.difficulty_repository.load()
+        if difficulty is None:
+            raise NoSavedGame('No difficulty set!')
+        return difficulty
+
+    def start_new_game(self):
+        """Metodi, joka aloittaa uuden pelin. Lataa asetetun vaikeustason, jos ei ole asetettu,
+        niin asettaa oletusarvoisesti luvun 20. Tätä tarvitaan Sudoku -luokan luomisessa. 
+        Luo Sudoku -luokan ja asettaa sen
         self._grid attribuuttiin. Asettaa oikean self._filled attribuutin arvon ja
         asettaa self._complete arvon takaisin False, jos viimeksi pelattiin valmiiksi.
 
-        Args:
-            difficulty (int, optional): Kuvastaa pelin vaikeustasoa. Tarvitaan
-            Sudoku luokan luomisessa. Oletusarvona 50.
         """
+        try:
+            difficulty = self._get_difficulty()
+        except NoSavedGame:
+            difficulty = 20
+
         self._grid = Sudoku(difficulty)
         filled = 81
         for i in range(9):

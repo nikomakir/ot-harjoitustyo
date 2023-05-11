@@ -11,3 +11,5 @@ except FileNotFoundError:
 
 SUDOKU_FILENAME = os.getenv("SUDOKU_FILENAME") or "sudoku.csv"
 SUDOKU_FILEPATH = os.path.join(dirname, "..", "data", SUDOKU_FILENAME)
+DIFFICULTY_FILENAME = os.getenv("DIFFICULTY_FILENAME") or "difficulty.csv"
+DIFFICULTY_FILEPATH = os.path.join(dirname, "..", "data", DIFFICULTY_FILENAME)

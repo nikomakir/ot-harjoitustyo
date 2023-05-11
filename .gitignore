@@ -5,3 +5,5 @@ htmlcov
 #data files
 data/sudoku.csv
 data/test-sudoku.csv
+data/difficulty.csv
+data/test-difficulty.csv

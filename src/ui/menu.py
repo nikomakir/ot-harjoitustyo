@@ -8,19 +8,17 @@ class Menu:
     """Aloitusvalikkoa kuvaava luokka.
     """
 
-    def __init__(self, display, width, eventqueue, game_service=game_service):
+    def __init__(self, display, eventqueue, game_service=game_service):
         """Attributes:
             display : pygame näyttö
             backround_color : näytön taustaväri
             events : tapahtumien käsittelyluokka EventQueue
             button_color : Valikon painikkeiden väri
             font : fontti, jolla näytön tekstit on kirjoitettu
-            width : näytön leveys (näyttö on neliö, eli sama korkeus)
             game_service : sovelluslogiikasta vastaava luokka GameService
 
         Args:
             display : pygame näyttö
-            width (int): näytön leveys ja korkeus
             eventqueue (EventQueue): pygame tapahtumia kuvaava luokka EventQueue
             game_service (GameService, optional): Sovelluslogiikasta vastaava luokka. Oletusarvona sama game_service
             kuin mitä muutkin luokat käyttävät.
@@ -30,7 +28,6 @@ class Menu:
         self._events = eventqueue
         self._button_color = (255, 200, 200)
         self._font = pygame.font.SysFont('Comic Sans MS', 50)
-        self._width = width
         self._game_service = game_service
 
     def initialize(self):
@@ -38,6 +35,9 @@ class Menu:
         """
         self._render()
         self._menu_loop()
+
+    def _get_screen_size(self):
+        return self._display.get_size()
 
     def _render(self):
         self._display.fill(self._backround_color)
@@ -50,9 +50,10 @@ class Menu:
         self._new_game_rect = new_game_button.get_rect()
         self._resume_rect = resume_button.get_rect()
         self._quit_rect = quit_button.get_rect()
-        self._new_game_rect.center = (self._width//2, self._width//4)
-        self._resume_rect.center = (self._width//2, self._width//4+150)
-        self._quit_rect.center = (self._width//2, self._width//4+300)
+        width, height = self._get_screen_size()
+        self._new_game_rect.center = (width//2, height//4)
+        self._resume_rect.center = (width//2, height//2)
+        self._quit_rect.center = (width//2, int(height*(3/4)))
         self._display.blit(new_game_button, self._new_game_rect)
         self._display.blit(resume_button, self._resume_rect)
         self._display.blit(quit_button, self._quit_rect)
@@ -67,8 +68,7 @@ class Menu:
                 if event.type == pygame.MOUSEBUTTONDOWN:
                     point = pygame.mouse.get_pos()
                     new_game_collide = self._new_game_rect.collidepoint(point)
-                    resume_button_collide = self._resume_rect.collidepoint(
-                        point)
+                    resume_button_collide = self._resume_rect.collidepoint(point)
                     quit_collide = self._quit_rect.collidepoint(point)
                     if quit_collide:
                         running = False
