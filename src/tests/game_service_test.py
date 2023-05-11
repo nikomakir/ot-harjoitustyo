@@ -3,9 +3,29 @@ from service.game_service import GameService, NoSavedGame
 from entities.sudoku import Sudoku
 
 
-class TestGameGrid(unittest.TestCase):
+class FakeSudokuRepository:
+    def __init__(self):
+        self.grid = []
+        self.start = []
+        self.filled = 0
+
+    def delete(self):
+        self.grid.clear()
+        self.start.clear()
+        self.filled = 0
+
+    def write(self, filled, grid, start):
+        self.grid = grid
+        self.start = start
+        self.filled = filled
+
+    def load(self):
+        return self.grid, self.start, self.filled
+
+
+class TestGameService(unittest.TestCase):
     def setUp(self):
-        self.game = GameService()
+        self.game = GameService(FakeSudokuRepository())
 
     def test_get_pos_works(self):
         self.assertEqual(self.game.get_pos(), (0, 0))
