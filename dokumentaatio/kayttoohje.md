@@ -43,7 +43,7 @@ Pelin käynnistyttyä avautuu aloitusruutu:
 Aloitusvalikosta pystyy käynnistämään uuden pelin nappia _New Game_ painamalla. _Resume Game_ -nappi avaa keskeneräisen pelin, jos sellainen on saatavilla.
 Jos ei ole, niin mitään ei tapahdu. _Options_ nappi avaa uuden näkymän, jossa voi muuttaa vaikeustasoa.
 
-## Options -valikko
+### Options -valikko
 
 Aloitusruudulta pääsee seuraavanlaiseen näkymään, kun valitsee _Options_:
 
