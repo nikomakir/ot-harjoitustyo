@@ -1,18 +1,24 @@
 # Ohjelmistotekniikka, harjoitustyö
 
 ## Sudoku
-Harjoitustyön aiheena on Sudoku -peli.
+Harjoitustyön aiheena on Sudoku -peli. Pelissä voi asettaa vaikeustason ja ratkoa Sudoku -ruudukon. Ohjelma tallentaa myös keskeneräisen pelin ja sitä voi jatkaa. 
+
+## Huomio ohjelman toimivuudesta
+
+Ohjelmaa on testattu Python 3.10.6 versiolla. Sovelluksen vaatimuksena on versio 3.10 tai uudempi, eli toimivuudesta ei ole varmuutta vanhemmilla Python versioilla.
 
 ## Dokumentaatio
- - [käyttöohje](./dokumentaatio/kayttoohje.md)
+ - [Käyttöohje](./dokumentaatio/kayttoohje.md)
 
- - [tuntikirjanpito.md](./dokumentaatio/tuntikirjanpito.md)
+ - [Tuntikirjanpito](./dokumentaatio/tuntikirjanpito.md)
 
- - [vaatimusmaarittely.md](./dokumentaatio/vaatimusmaarittely.md)
+ - [Vaatimusmaarittely](./dokumentaatio/vaatimusmaarittely.md)
 
- - [changelog.md](./dokumentaatio/changelog.md)
+ - [Changelog](./dokumentaatio/changelog.md)
  
- - [arkkitehtuuri](./dokumentaatio/arkkitehtuuri.md)
+ - [Arkkitehtuuri](./dokumentaatio/arkkitehtuuri.md)
+
+ - [Testausdokumentti](./dokumentaatio/testausdokumentti.md)
  
 ## Lataaminen
 - [Release 1](https://github.com/nikomakir/ot-harjoitustyo/releases/tag/viikko5)
