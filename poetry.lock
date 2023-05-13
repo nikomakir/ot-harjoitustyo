@@ -446,6 +446,21 @@ files = [
 ]
 
 [[package]]
+name = "pygame-widgets"
+version = "1.1.1"
+description = "Widgets for use with Pygame"
+category = "main"
+optional = false
+python-versions = ">=3.10"
+files = [
+    {file = "pygame-widgets-1.1.1.tar.gz", hash = "sha256:173aaa33c98de2bc2be5d0c80bfff34b0e0e69e55aec25cf165f593d9c1a5f62"},
+    {file = "pygame_widgets-1.1.1-py3-none-any.whl", hash = "sha256:b6f65553cda673e1ce540ee2fd005f2492d826d9b7d94b240ed60c1ee3b31b50"},
+]
+
+[package.dependencies]
+pygame = ">=2.0.0"
+
+[[package]]
 name = "pylint"
 version = "2.17.2"
 description = "python code static checker"
@@ -469,7 +484,6 @@ mccabe = ">=0.6,<0.8"
 platformdirs = ">=2.2.0"
 tomli = {version = ">=1.1.0", markers = "python_version < \"3.11\""}
 tomlkit = ">=0.10.1"
-typing-extensions = {version = ">=3.10.0", markers = "python_version < \"3.10\""}
 
 [package.extras]
 spelling = ["pyenchant (>=3.2,<4.0)"]
@@ -653,5 +667,5 @@ files = [
 
 [metadata]
 lock-version = "2.0"
-python-versions = "^3.8"
-content-hash = "76928c7b48de9bc4b7ef19c57a63388802b7ba338b7687ba984b34d3727c65c7"
+python-versions = "^3.10"
+content-hash = "59ae31ac6266bd3f423458c50b4227836593344d158000ff33a4fc4bfb1e74e2"

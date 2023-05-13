@@ -63,11 +63,11 @@ class Renderer:
         self._render_finished_game()
         pygame.display.update()
 
-
     def _render_finished_game(self):
         if self._game_service.check_if_complete():
             width, heigth = self._get_screen_size()
-            ending_text = self._font.render("Congratulations!", True, "black", "red")
+            ending_text = self._font.render(
+                "Congratulations!", True, "black", "red")
             ending_text_rect = ending_text.get_rect()
-            ending_text_rect.center = (width//2,heigth//2)
-            self._display.blit(ending_text,ending_text_rect)
+            ending_text_rect.center = (width//2, heigth//2)
+            self._display.blit(ending_text, ending_text_rect)

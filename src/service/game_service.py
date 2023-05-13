@@ -1,6 +1,8 @@
 from entities.sudoku import Sudoku
-from repositories.sudoku_repository import sudoku_repository as default_sudoku_repository
-from repositories.difficulty_repository import difficulty_repository as default_difficulty_repository
+from repositories.sudoku_repository import (sudoku_repository as
+                                            default_sudoku_repository)
+from repositories.difficulty_repository import (difficulty_repository as
+                                                default_difficulty_repository)
 
 
 class NoSavedGame(Exception):
@@ -11,7 +13,8 @@ class GameService:
     """Sovelluslogiikasta vastaava luokka.
     """
 
-    def __init__(self, sudoku_repository=default_sudoku_repository, difficulty_repository=default_difficulty_repository):
+    def __init__(self, sudoku_repository=default_sudoku_repository,
+                 difficulty_repository=default_difficulty_repository):
         """Sovelluslogiikasta vastaava luokka.
 
         Attributes:
@@ -23,10 +26,12 @@ class GameService:
             difficulty_repository: Pelin vaikeustason tallennuksesta ja lataamisesta vastaava luokka
             filled : kaikista sudokuruudukon 81 luvusta ne luvut, jotka on 
             kyseisenä hetkenä täytetty. 
+            current_difficulty : nykyisen pelin vaikeustaso
 
         Args:
             sudoku_repository (optional): Tallentamisesta vastaava luokka SudokuRepository
-            difficulty_repository (optional): Vaikeustason tallentamisesta vastaava luokka DifficultyRepository
+            difficulty_repository (optional): Vaikeustason tallentamisesta vastaava luokka 
+            DifficultyRepository
         """
         self._grid = None
         self._pos = [0, 0]
@@ -34,20 +39,39 @@ class GameService:
         self._repository = sudoku_repository
         self.difficulty_repository = difficulty_repository
         self._filled = None
+        self._current_difficulty = 0
 
     def _get_difficulty(self):
+        """Metodi, joka hakee tiedostosta asetetun vaikeustason hyödyntäen
+        DifficultyRepository luokan metodia load().
+
+        Raises:
+            NoSavedGame: Nostaa poikkeuksen, jos ei ole mitään tallennettuna.
+
+        Returns:
+            difficulty: vaikeustaso kokonaislukuna
+        """
         difficulty = self.difficulty_repository.load()
         if difficulty is None:
             raise NoSavedGame('No difficulty set!')
         return difficulty
 
+    def save_difficulty(self, difficulty):
+        """Metodi, joka tallentaa asetetun vaikeustason käyttäen DifficultyRepositoryn
+        metodia write().
+
+        Args:
+            difficulty (int): vaikeustaso kokonaislukuna
+        """
+        self.difficulty_repository.write(difficulty)
+
     def start_new_game(self):
         """Metodi, joka aloittaa uuden pelin. Lataa asetetun vaikeustason, jos ei ole asetettu,
         niin asettaa oletusarvoisesti luvun 20. Tätä tarvitaan Sudoku -luokan luomisessa. 
         Luo Sudoku -luokan ja asettaa sen
-        self._grid attribuuttiin. Asettaa oikean self._filled attribuutin arvon ja
-        asettaa self._complete arvon takaisin False, jos viimeksi pelattiin valmiiksi.
-
+        self._grid attribuuttiin. Asettaa oikeat self._filled ja self._current_difficulty 
+        attribuuttien arvot ja  asettaa self._complete arvon takaisin False, 
+        jos viimeksi pelattiin valmiiksi.
         """
         try:
             difficulty = self._get_difficulty()
@@ -61,6 +85,7 @@ class GameService:
                 if self._grid.grid[i][j] == 0:
                     filled -= 1
         self._filled = filled
+        self._current_difficulty = difficulty
         self._complete = False
 
     def get_pos(self):
@@ -119,33 +144,35 @@ class GameService:
 
     def load_game(self):
         """Metodi, joka lataa pelin. Kutsuu SudokuRepository -luokan
-        metodia load() ja syöttää arvot muuttujiin grid, start ja filled.
+        metodia load() ja syöttää arvot muuttujiin grid, start, filled ja difficulty.
         Näillä luo uuden Sudoku -luokan olion self._grid attribuuttiin ja päivittää 
-        self._filled ja self._complete attribuutit.
+        self._filled, self._current_difficulty ja self._complete attribuutit.
         Jos grid tai start on tyjiä, peliä ei ole tallennettu ja nostaa tästä poikkeuksen.
 
 
         Raises:
             NoSavedGame: Poikkeus, jos peliä ei ole tallennettu.
         """
-        grid, start, filled = self._repository.load()
+        grid, start, filled, difficulty = self._repository.load()
 
         if (len(grid) or len(start)) == 0:
             raise NoSavedGame('No saved game available!')
 
         self._grid = Sudoku(0, grid, start)
         self._filled = filled
+        self._current_difficulty = difficulty
         self._complete = False
 
     def save_game(self):
         """Tallentamisesta vastaava metodi. Kutsuu SudokuRepository -luokan 
-        metodia write() omilla attribuuttien self._filled ja self._grid Sudoku luokan 
-        attributtien grid ja start arvoilla, jos peli on kesken. Mikäli peli on valmis,
-        metodi kutsuu SudokuRepository -luokan metodia delete(), joka tyhjentää tiedot. 
+        metodia write() omilla attribuuttien self._current_difficulty, self._filled 
+        ja self._grid Sudoku luokan attributtien grid ja start arvoilla, jos peli on kesken.
+        Mikäli peli on valmis, metodi kutsuu SudokuRepository -luokan metodia delete(), 
+        joka tyhjentää tiedot. 
         """
         if not self._complete:
-            self._repository.write(
-                self._filled, self._grid.grid, self._grid.start)
+            self._repository.write(self._current_difficulty,
+                                   self._filled, self._grid.grid, self._grid.start)
         else:
             self._repository.delete()
 

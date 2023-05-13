@@ -2,6 +2,7 @@ import pygame
 from service.game_service import game_service, NoSavedGame
 from ui.renderer import Renderer
 from ui.gameloop import GameLoop
+from ui.options import Options
 
 
 class Menu:
@@ -29,6 +30,7 @@ class Menu:
         self._button_color = (255, 200, 200)
         self._font = pygame.font.SysFont('Comic Sans MS', 50)
         self._game_service = game_service
+        self._options_menu = Options(self._display, self._events, self._font)
 
     def initialize(self):
         """Metodi, joka aloittaa aloitusruudukon piirtämisen ja tapahtumien käsittelyn.
@@ -45,18 +47,18 @@ class Menu:
             "New Game", True, "black", self._button_color)
         resume_button = self._font.render(
             "Resume Game", True, "black", self._button_color)
-        quit_button = self._font.render(
-            "Quit", True, "black", self._button_color)
+        options_button = self._font.render(
+            "Options", True, "black", self._button_color)
         self._new_game_rect = new_game_button.get_rect()
         self._resume_rect = resume_button.get_rect()
-        self._quit_rect = quit_button.get_rect()
+        self._options_rect = options_button.get_rect()
         width, height = self._get_screen_size()
         self._new_game_rect.center = (width//2, height//4)
         self._resume_rect.center = (width//2, height//2)
-        self._quit_rect.center = (width//2, int(height*(3/4)))
+        self._options_rect.center = (width//2, int(height*(3/4)))
         self._display.blit(new_game_button, self._new_game_rect)
         self._display.blit(resume_button, self._resume_rect)
-        self._display.blit(quit_button, self._quit_rect)
+        self._display.blit(options_button, self._options_rect)
         pygame.display.update()
 
     def _menu_loop(self):
@@ -68,10 +70,16 @@ class Menu:
                 if event.type == pygame.MOUSEBUTTONDOWN:
                     point = pygame.mouse.get_pos()
                     new_game_collide = self._new_game_rect.collidepoint(point)
-                    resume_button_collide = self._resume_rect.collidepoint(point)
-                    quit_collide = self._quit_rect.collidepoint(point)
-                    if quit_collide:
-                        running = False
+                    resume_button_collide = self._resume_rect.collidepoint(
+                        point)
+                    options_collide = self._options_rect.collidepoint(point)
+                    if options_collide:
+                        to_quit, difficulty = self._options_menu.start()
+                        self._game_service.save_difficulty(difficulty)
+                        if to_quit:
+                            running = False
+                        else:
+                            self._render()
                     elif new_game_collide:
                         self._game_service.start_new_game()
                         renderer = Renderer(self._display, self._game_service)

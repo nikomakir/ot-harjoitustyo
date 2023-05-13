@@ -8,24 +8,47 @@ class FakeSudokuRepository:
         self.grid = []
         self.start = []
         self.filled = 0
+        self.difficulty = 0
 
     def delete(self):
         self.grid.clear()
         self.start.clear()
         self.filled = 0
+        self.difficulty = 0
 
-    def write(self, filled, grid, start):
+    def write(self, difficulty, filled, grid, start):
         self.grid = grid
         self.start = start
         self.filled = filled
+        self.difficulty = difficulty
 
     def load(self):
-        return self.grid, self.start, self.filled
+        return self.grid, self.start, self.filled, self.difficulty
+
+
+class FakeDifficultyRepository:
+    def __init__(self):
+        self.difficulty = None
+
+    def load(self):
+        return self.difficulty
+
+    def write(self, difficulty):
+        self.difficulty = difficulty
 
 
 class TestGameService(unittest.TestCase):
     def setUp(self):
-        self.game = GameService(FakeSudokuRepository())
+        self.game = GameService(FakeSudokuRepository(),
+                                FakeDifficultyRepository())
+
+    def test_get_difficulty_if_not_set(self):
+        with self.assertRaises(NoSavedGame):
+            self.game._get_difficulty()
+
+    def test_save_difficulty_works(self):
+        self.game.save_difficulty(50)
+        self.assertEqual(self.game._get_difficulty(), 50)
 
     def test_get_pos_works(self):
         self.assertEqual(self.game.get_pos(), (0, 0))
