@@ -39,7 +39,7 @@ class GameService:
         self._repository = sudoku_repository
         self.difficulty_repository = difficulty_repository
         self._filled = None
-        self._current_difficulty = 0
+        self.current_difficulty = 0
 
     def _get_difficulty(self):
         """Metodi, joka hakee tiedostosta asetetun vaikeustason hyödyntäen
@@ -85,7 +85,7 @@ class GameService:
                 if self._grid.grid[i][j] == 0:
                     filled -= 1
         self._filled = filled
-        self._current_difficulty = difficulty
+        self.current_difficulty = difficulty
         self._complete = False
 
     def get_pos(self):
@@ -160,7 +160,7 @@ class GameService:
 
         self._grid = Sudoku(0, grid, start)
         self._filled = filled
-        self._current_difficulty = difficulty
+        self.current_difficulty = difficulty
         self._complete = False
 
     def save_game(self):
@@ -171,7 +171,7 @@ class GameService:
         joka tyhjentää tiedot. 
         """
         if not self._complete:
-            self._repository.write(self._current_difficulty,
+            self._repository.write(self.current_difficulty,
                                    self._filled, self._grid.grid, self._grid.start)
         else:
             self._repository.delete()

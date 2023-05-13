@@ -13,4 +13,3 @@ class TestDifficultyRepository(unittest.TestCase):
 
     def test_load(self):
         self.assertEqual(difficulty_repository.load(), 0)
-            

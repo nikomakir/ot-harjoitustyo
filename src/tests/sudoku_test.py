@@ -10,9 +10,9 @@ class TestSudoku(unittest.TestCase):
     """
 
     def setUp(self):
-        self.grid = Sudoku(50)
-        self.grid.grid = [[0, 2, 0], [0, 5, 0], [0, 0, 9]]
-        self.grid.start = [row[:] for row in self.grid.grid]
+        test_grid = [[0, 2, 0], [0, 5, 0], [0, 0, 9]]
+        test_start = [row[:] for row in test_grid]
+        self.grid = Sudoku(0, test_grid, test_start)
 
     def test_inserting_valid_number(self):
         self.grid.insert_number(0, 1, 4)

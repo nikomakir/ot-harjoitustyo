@@ -53,8 +53,8 @@ class SudokuRepository:
         tiedosto rivi kerrallaan ja täytetään tiedot muuttujiin grid, start ja filled.
 
         Returns:
-            tuple: peli- ja aloitusruudukko listana ja GameService luokan tarvitsema self._filled 
-            arvo kokonaislukuna. 
+            tuple: peli- ja aloitusruudukko listana ja GameService luokan tarvitsemat filled 
+            ja difficulty arvot kokonaislukuina. 
         """
         self._ensure_file_exists()
 

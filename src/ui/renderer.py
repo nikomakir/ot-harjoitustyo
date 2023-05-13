@@ -35,6 +35,11 @@ class Renderer:
         back_text_rect = back_text.get_rect()
         back_text_rect.center = (width//2, height//27)
         self._display.blit(back_text, back_text_rect)
+        difficulty_text = self._font.render(
+            f"Difficulty: {str(self._game_service.current_difficulty)}", True, "red")
+        difficulty_text_rect = difficulty_text.get_rect()
+        difficulty_text_rect.center = (width//2, height-30)
+        self._display.blit(difficulty_text, difficulty_text_rect)
         x, y = self._game_service.get_pos()
         pygame.draw.rect(self._display, self._choice_color,
                          pygame.Rect(x*50+50, y*50+50, 50, 50))

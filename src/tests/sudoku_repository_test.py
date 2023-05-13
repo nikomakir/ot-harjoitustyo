@@ -28,7 +28,8 @@ class TestSudokuRepository(unittest.TestCase):
                       [7, 4, 5, 3, 1, 6, 8, 9, 2]]
 
     def test_write(self):
-        sudoku_repository.write(self.difficulty, self.filled, self.grid, self.start)
+        sudoku_repository.write(
+            self.difficulty, self.filled, self.grid, self.start)
         grid, start, filled, difficulty = sudoku_repository.load()
         self.assertEqual(filled, self.filled)
         self.assertEqual(grid, self.grid)
@@ -36,7 +37,8 @@ class TestSudokuRepository(unittest.TestCase):
         self.assertEqual(difficulty, self.difficulty)
 
     def test_load(self):
-        sudoku_repository.write(self.difficulty, self.filled, self.grid, self.start)
+        sudoku_repository.write(
+            self.difficulty, self.filled, self.grid, self.start)
         grid, start, filled, difficulty = sudoku_repository.load()
         self.assertEqual(filled, self.filled)
         self.assertEqual(difficulty, self.difficulty)
@@ -64,7 +66,8 @@ class TestSudokuRepository(unittest.TestCase):
         self.assertEqual(start, self.start)
 
     def test_delete(self):
-        sudoku_repository.write(self.difficulty, self.filled, self.grid, self.start)
+        sudoku_repository.write(
+            self.difficulty, self.filled, self.grid, self.start)
         sudoku_repository.delete()
         grid, start, filled, difficulty = sudoku_repository.load()
         self.assertEqual(filled, 0)

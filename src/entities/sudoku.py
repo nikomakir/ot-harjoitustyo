@@ -47,12 +47,12 @@ class Sudoku:
         self.grid = np.asarray(grid, dtype=int)
         self.start = np.copy(self.grid)
 
-    def insert_number(self, x, y, number):  # pylint: disable=invalid-name
+    def insert_number(self, column, row, number):
         """Numeron täyttämisestä vastaava metodi.
 
         Args:
-            x (int): Ruudukon vaakatasolla oleva koordinaatti
-            y (int): Ruudukon pystytasolla oleva koordinaatti
+            column (int): Ruudukon vaakatasolla oleva koordinaatti
+            row (int): Ruudukon pystytasolla oleva koordinaatti
             number (int): Syötettävä luku
 
         Returns:
@@ -61,9 +61,9 @@ class Sudoku:
             muutetaan ruutua kuvaava listan alkio syötettäväksi luvuksi 
             ja palautetaan True.
         """
-        if self.start[y][x] != 0:
+        if self.start[row][column] != 0:
             return False
-        self.grid[y][x] = number
+        self.grid[row][column] = number
         return True
 
     def check_if_complete(self):
@@ -73,28 +73,28 @@ class Sudoku:
         Returns:
             Boolean: Palauttaa False, jos ei ole oikein täytetty, muuten True.
         """
-        for i in range(9):
+        for row in range(9):
             seen_in_rows = set()
             seen_in_columns = set()
-            for j in range(9):
-                number = self.grid[i][j]
+            for column in range(9):
+                number = self.grid[row][column]
                 if number == 0 or number in seen_in_rows:
                     return False
                 seen_in_rows.add(number)
-                number = self.grid[j][i]
+                number = self.grid[column][row]
                 if number in seen_in_columns:
                     return False
                 seen_in_columns.add(number)
         return True
 
-    def get_current_number(self, x, y):  # pylint: disable=invalid-name
+    def get_current_number(self, column, row):
         """Metodi, joka palauttaa ruudukon tietyn ruudun luvun listalta.
 
         Args:
-            x (int): Ruudukon vaakarivin koordinaattia kuvaava luku.
-            y (int): Ruudukon pystyrivin koordinaattia kuvaava luku.
+            column (int): Ruudukon vaakarivin koordinaattia kuvaava luku.
+            row (int): Ruudukon pystyrivin koordinaattia kuvaava luku.
 
         Returns:
             int: Palauttaa kyseisen kohdan luvun, joka on tallennettu matriisiin.
         """
-        return self.grid[y][x]
+        return self.grid[row][column]
