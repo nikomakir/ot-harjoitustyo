@@ -21,6 +21,7 @@ Ohjelmaa on testattu Python 3.10.6 versiolla. Sovelluksen vaatimuksena on versio
  - [Testausdokumentti](./dokumentaatio/testausdokumentti.md)
  
 ## Lataaminen
+- [Loppupalautus](https://github.com/nikomakir/ot-harjoitustyo/releases/tag/loppupalautus)
 - [Release 1](https://github.com/nikomakir/ot-harjoitustyo/releases/tag/viikko5)
 - [Release 2](https://github.com/nikomakir/ot-harjoitustyo/releases/tag/viikko6)
  
