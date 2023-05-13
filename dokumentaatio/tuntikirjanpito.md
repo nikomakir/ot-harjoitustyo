@@ -19,5 +19,8 @@
 | 27.4       | 4        | lisätty testit SudokuRepository ja GameSevice luokille, muokattu GameLoop ja Menu -luokkia (takaisin paluu mahd.) |
 | 28.4.      | 1        | lisätty dokumentaatiota      |
 | 29.4       | 1        | lisätty dokumentaatiota      |
+| 11.5.      | 1        | Options valikon suunnittelua      |
+| 12.5.      | 3        | lisätty Options -valikko ja DifficultyRepository -luokka      |
 |            |          |       |
-|  Yhteensä  | 56       |       |
+|            |          |       |
+|  Yhteensä  | 60       |       |

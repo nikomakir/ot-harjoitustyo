@@ -33,3 +33,10 @@
 - lisätty GameService -luokalle testejä
 - lisätty mahdollisuus palata peliruudulta aloitusruudulle
 - lisätty docstring -dokumentaatiota
+
+## Viikko 7 
+
+- lisätty DifficultyRepository -luokka ja testit
+- muokattu GameService -luokkaa DifficultyRepository luokan integraatiossa
+- muokattu Menu luokkaa, nyt kolmas valikko aukeaa uuden näkymän Options
+- lisätty Options -luokka
