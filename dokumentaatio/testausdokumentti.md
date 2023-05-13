@@ -15,7 +15,7 @@ SudokuRepository ja DifficultyRepository -luokkia testataan testiluokilla ```Tes
 
 ### Testikattavuus
 
-Käyttöliittymää lukuunottamatta testauksen haarautumakattavuus on 97%.
+Käyttöliittymää lukuunottamatta testauksen haarautumakattavuus on 98%.
 
 ![Testikattavuus](./Kuvat/test_coverage.png)
 
