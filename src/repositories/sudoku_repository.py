@@ -68,8 +68,8 @@ class SudokuRepository:
             for row in file:
                 if row.startswith("difficulty"):
                     data = row.strip().split(";")
-                    difficulty = data[1]
-                    filled = data[3]
+                    difficulty = int(data[1])
+                    filled = int(data[3])
                     continue
                 if row.startswith("grid"):
                     continue
