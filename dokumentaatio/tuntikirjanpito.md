@@ -21,6 +21,6 @@
 | 29.4       | 1        | lisätty dokumentaatiota      |
 | 11.5.      | 1        | Options valikon suunnittelua      |
 | 12.5.      | 3        | lisätty Options -valikko ja DifficultyRepository -luokka      |
+|  13.5.     |  5       |  viimeistelty lisäykset ja dokumentaatio     |
 |            |          |       |
-|            |          |       |
-|  Yhteensä  | 60       |       |
+|  Yhteensä  | 65       |       |
