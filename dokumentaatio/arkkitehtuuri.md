@@ -78,8 +78,10 @@ sequenceDiagram
    actor User
    User->>UI: click "New Game" button
    UI->>GameService: start_new_game()
-   GameService->>Sudoku: Sudoku(50)
-   Sudoku->>Sudoku: initialize_grid(50)
+   GameService->>DifficultyRepository: get_difficulty()
+   DifficultyRepository-->>GameService: difficulty
+   GameService->>Sudoku: Sudoku(difficulty)
+   Sudoku->>Sudoku: initialize_grid(difficulty)
    Sudoku-->>GameService: Sudoku
    GameService-->>UI: Sudoku
    UI->UI: gameloop.start()
